@@ -208,7 +208,17 @@ def main() -> int:
     print(f"\n完全一致查询: {len(qs) - len(bad)}/{len(qs)}")
     print(f"字段级偏差: {len(ms)}")
     for m in ms[:20]:
-        print("  ", m[0], repr(m[1]), m[2])
+        op, arg, f, o, t = m
+        print("  ", op, repr(arg), f)
+        if isinstance(o, list) and isinstance(t, list):
+            so, st = set(o), set(t)
+            print("      len ours/theirs:", len(o), len(t))
+            print("      only ours:", sorted(so - st)[:40])
+            print("      only theirs:", sorted(st - so)[:40])
+            if so == st and o != t:
+                print("      same set, ORDER/DUP differs")
+        else:
+            print("      ours:", o, "theirs:", t)
     if not args.no_report:
         write_report(args.report, words, corpus, qs, ms, bad)
     return 1 if ms else 0
