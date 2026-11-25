@@ -43,7 +43,7 @@ def norm(s: str) -> str:
 def load_pronouncing():
     import pronouncing
     buf = io.BytesIO()
-    with open(DATA, encoding="utf-8") as f:
+    with open(DATA, encoding="latin-1") as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith(";"):
@@ -57,7 +57,7 @@ def load_pronouncing():
 
 def sample_words() -> list[str]:
     out, i = [], 0
-    with open(DATA, encoding="utf-8") as f:
+    with open(DATA, encoding="latin-1") as f:
         for line in f:
             line = line.strip()
             if not line or line.startswith(";"):
