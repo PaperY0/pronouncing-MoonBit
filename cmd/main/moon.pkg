@@ -1,0 +1,6 @@
+import {
+  "PaperY0/pronouncing" @lib,
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")

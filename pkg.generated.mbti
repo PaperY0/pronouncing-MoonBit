@@ -1,0 +1,70 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "PaperY0/pronouncing"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub let arpabet_consonants : Array[String]
+
+pub fn arpabet_to_ipa(String) -> String
+
+pub let arpabet_vowels : Array[String]
+
+pub fn cmudict_lines() -> Array[String]
+
+pub fn entry_count() -> Int32
+
+pub fn is_vowel(String) -> Bool
+
+pub fn phone_edit_distance(String, String) -> Int32
+
+pub fn phone_kind(String) -> PhoneKind?
+
+pub fn phone_to_ipa(String) -> String?
+
+pub fn phones_for_word(String) -> Array[String]
+
+pub fn rhymes(String) -> Array[String]
+
+pub fn rhyming_part(String) -> String
+
+pub fn search(String) -> Array[String] raise PronouncingError
+
+pub fn search_stresses(String) -> Array[String] raise PronouncingError
+
+pub fn stress_of(String) -> Int32?
+
+pub fn stresses(String) -> String
+
+pub fn stresses_for_word(String) -> Array[String]
+
+pub fn strip_stress(String) -> String
+
+pub fn syllable_count(String) -> Int32
+
+pub fn word_count() -> Int32
+
+// Errors
+#derive(Eq, @debug.Debug)
+pub suberror PronouncingError {
+  InvalidRegex(String)
+}
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum PhoneKind {
+  Vowel
+  Stop
+  Affricate
+  Fricative
+  Aspirate
+  Liquid
+  Nasal
+  Semivowel
+}
+
+// Type aliases
+
+// Traits

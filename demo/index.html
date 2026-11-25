@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pronouncing-MoonBit — CMU 发音词典演示</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>CMU 发音词典</h1>
+    <p class="sub">
+      MoonBit 实现的 <a href="https://github.com/aparrish/pronouncingpy" target="_blank" rel="noopener">pronouncing</a>
+      + ARPABET↔IPA 增值。全部计算在你的浏览器里完成，<strong>查询时不发送任何数据</strong>；初次加载仍需请求页面静态资源。
+    </p>
+  </header>
+
+  <section class="card">
+    <div class="row">
+      <div class="grow">
+        <label for="arg">词 / 正则</label>
+        <input id="arg" type="text" autocomplete="off" spellcheck="false"
+               aria-describedby="status" placeholder="输入一个英文词…" value="permit">
+      </div>
+      <div>
+        <label for="op">查询</label>
+        <select id="op">
+          <option value="info">综合</option>
+          <option value="rhymes">押韵词</option>
+          <option value="ipa">IPA</option>
+          <option value="phones">发音</option>
+          <option value="stress">重音</option>
+          <option value="syllables">音节</option>
+          <option value="search">发音正则</option>
+          <option value="stresses">重音正则</option>
+        </select>
+      </div>
+    </div>
+    <p class="hint" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="card result" id="result" hidden>
+    <div id="out"></div>
+  </section>
+
+  <footer>
+    <p>
+      词典为 CMUdict 0.7b（133,852 条目，BSD-like 许可，(c) Carnegie Mellon University）。
+      算法来自 <code>aparrish/pronouncingpy</code>（MIT）。
+      对上游的差分对拍见
+      <a href="https://github.com/PaperY0/pronouncing-MoonBit/blob/main/DIFF-REPORT.md" target="_blank" rel="noopener">DIFF-REPORT.md</a>。
+    </p>
+  </footer>
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

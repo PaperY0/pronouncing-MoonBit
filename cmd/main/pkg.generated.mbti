@@ -1,0 +1,14 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "PaperY0/pronouncing/cmd/main"
+
+// Values
+
+// Errors
+type CliError
+
+// Types and methods
+type CliOptions
+
+// Type aliases
+
+// Traits

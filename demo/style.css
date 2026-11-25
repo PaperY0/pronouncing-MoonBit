@@ -1,0 +1,83 @@
+:root {
+  --bg: #0f1115;
+  --card: #171a21;
+  --line: #262b36;
+  --fg: #e6e9ef;
+  --dim: #8b93a7;
+  --accent: #5b8cff;
+  --ipa: #13c2c2;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 system-ui, -apple-system, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; }
+
+header h1 { margin: 0 0 8px; font-size: 26px; letter-spacing: .02em; }
+.sub { margin: 0 0 28px; color: var(--dim); }
+.sub strong { color: var(--fg); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+
+label { display: block; font-size: 13px; color: var(--dim); margin-bottom: 6px; }
+
+.row { display: flex; gap: 12px; }
+.row .grow { flex: 1; }
+
+input[type="text"], select {
+  width: 100%;
+  padding: 11px 13px;
+  background: #0d0f13;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--fg);
+  font: 16px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+select { font-family: system-ui, sans-serif; font-size: 14px; }
+input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+
+.hint { color: var(--dim); font-size: 13px; margin: 8px 0 0; }
+
+h2 { font-size: 14px; margin: 4px 0 12px; color: var(--dim); font-weight: 600; }
+
+.pron {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+.pron .phones {
+  font: 18px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .03em;
+}
+.pron .ipa { color: var(--ipa); font-size: 17px; margin-top: 4px; }
+.pron .meta { color: var(--dim); font-size: 13px; margin-top: 6px; }
+.pron .meta code { color: var(--fg); }
+
+ul.words { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+ul.words li {
+  background: #0d0f13; border: 1px solid var(--line);
+  padding: 4px 10px; border-radius: 20px; font-size: 14px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+ul.words li.empty { color: var(--dim); border: none; background: none; }
+
+.count { color: var(--dim); font-size: 13px; margin: 0 0 12px; }
+.error { color: #ff7a45; }
+
+footer { color: #6b7386; font-size: 13px; margin-top: 8px; }
+footer a, .sub a { color: var(--accent); }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }

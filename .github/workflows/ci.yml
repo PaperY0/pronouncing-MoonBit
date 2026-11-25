@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # check/test/format 三件套，跨三个后端跑测试。
+  # 工具链版本统一由 .moonbit-version 指定。
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [wasm, wasm-gc, js]
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s -- "$(cat .moonbit-version)"
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Versions
+        run: |
+          moon version --all
+          moon update
+
+      - name: Format check
+        run: moon fmt --check
+
+      - name: Check
+        run: moon check
+
+      - name: Test (${{ matrix.target }})
+        run: moon test --target ${{ matrix.target }}
+
+      - name: CLI smoke test (${{ matrix.target }})
+        run: |
+          moon run --target ${{ matrix.target }} cmd/main -- --json phones permit > cli-result.json
+          python3 -c 'import json; assert json.load(open("cli-result.json"))["phones"] == ["P ER0 M IH1 T", "P ER1 M IH2 T"]'
+          moon run --target ${{ matrix.target }} cmd/main -- --json rhymes conditioner > cli-rhymes.json
+          python3 -c 'import json; assert json.load(open("cli-rhymes.json"))["rhymes"] == ["commissioner", "parishioner", "petitioner", "practitioner"]'
+          if moon run --target ${{ matrix.target }} cmd/main -- search "[" > cli-error.json 2> cli-error.log; then
+            echo "invalid regex unexpectedly succeeded"
+            exit 1
+          fi
+
+  # `moon info` 生成的接口若与提交不一致，说明 .mbti 忘了更新。
+  interface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s -- "$(cat .moonbit-version)"
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+      - name: moon info + fmt (must be a no-op)
+        run: |
+          moon info
+          moon fmt
+          git diff --exit-code -- '*.mbti' '*.mbt'
+
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up pinned MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s -- "$(cat .moonbit-version)"
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+      - name: Build CLI and demo
+        run: |
+          moon build --target js --release
+          cp _build/js/release/build/demo/web/web.js demo/pronouncing.js
+      - name: Install upstream reference package
+        run: pip install pronouncing cmudict
+      - name: Differential comparison against upstream Python pronouncing
+        run: python tools/diff_test.py --no-report
+      - name: Differential comparison against faithful JS port
+        run: node tools/diff_test.mjs --no-report
+      - name: Demo web export
+        run: node --test tools/test_demo.mjs

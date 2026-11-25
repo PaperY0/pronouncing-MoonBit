@@ -1,0 +1,18 @@
+.DS_Store
+_build/
+target/
+target
+.mooncakes/
+.moonagent/
+trace.json
+# 差分对拍的 node 依赖与 Python 缓存，均可重建
+tools/ref/node_modules/
+__pycache__/
+*.pyc
+# upstream data snapshots (tarballs are regenerable)
+data/upstream/*.tar.gz
+# demo 的构建产物（demo/build.sh 生成）
+demo/pronouncing.js
+# coverage 数据文件
+bisect.coverage
+uncovered.log

@@ -1,0 +1,34 @@
+MIT License
+
+Copyright (c) 2026 PaperY0 (Wen Shuying)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+The embedded pronunciation data (cmudict_data.mbt, generated from
+data/upstream/cmudict-0.7b) is from the CMU Pronouncing Dictionary,
+Copyright (C) 1993-2015 Carnegie Mellon University. It is distributed under
+its own permissive license (see data/README.md and data/upstream/cmudict-0.7b
+header). Use of the dictionary for any research or commercial purpose is
+completely unrestricted; acknowledgement of its origin is requested.
+
+The API design follows Allison Parrish's `pronouncing` (Python, MIT) and the
+CMUdict data format. ARPABET-to-IPA mapping follows the standard CMU/IPA
+correspondence.
