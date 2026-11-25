@@ -39,7 +39,7 @@ function parseCmu(text) {
   return out;
 }
 
-const pronunciations = parseCmu(readFileSync(DATA_PATH, 'utf-8'));
+const pronunciations = parseCmu(readFileSync(DATA_PATH, 'latin1'));
 const lookup = new Map();
 const rhymeLookup = new Map();
 for (const [word, phones] of pronunciations) {

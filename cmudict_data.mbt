@@ -35460,7 +35460,7 @@ const CMUDICT_08 : String =
   #|dziuk JH IY0 UW1 K
   #|dzokhar JH OW2 K AA1 R
   #|d_c D IY1 S IY1
-  #|d�j� D EY2 JH AA1
+  #|déjà D EY2 JH AA1
   #|e IY1
   #|e's IY1 Z
   #|e-mail IY1 M EY2 L

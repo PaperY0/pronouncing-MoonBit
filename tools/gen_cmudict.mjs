@@ -31,7 +31,10 @@ const OUT = path.join(ROOT, "cmudict_data.mbt");
 const CHUNK_LINES = 4000;
 
 function parse(src) {
-  const lines = fs.readFileSync(src, "utf8").split(/\r?\n/);
+  // CMUdict 0.7b is latin-1 (ISO-8859-1): headwords like "déjà" and header
+  // comments carry bytes >= 0x80 that are NOT valid UTF-8. Read as latin1 so
+  // each byte maps to its Unicode code point; the output is written as UTF-8.
+  const lines = fs.readFileSync(src, "latin1").split(/\r?\n/);
   const entries = [];
   let skippedComments = 0;
   for (const raw of lines) {

@@ -27,7 +27,7 @@ const corpus = JSON.parse(readFileSync(path.join(__dirname, 'corpus.json'), 'utf
 
 // 系统抽样：每 997 个条目取一个词（质数步长避免与词典周期对齐），保证覆盖面。
 function sampleWords() {
-  const text = readFileSync(DATA, 'utf-8');
+  const text = readFileSync(DATA, 'latin1');
   const out = [];
   let i = 0;
   for (let line of text.split('\n')) {
