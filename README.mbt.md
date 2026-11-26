@@ -1,11 +1,16 @@
 # PaperY0/pronouncing
 
+[![MoonBit](https://img.shields.io/badge/MoonBit-0.1.1-6c4ce0)](https://mooncakes.io/docs/PaperY0/pronouncing)
+[![Backend](https://img.shields.io/badge/Backend-wasm_%7C_wasm--gc_%7C_js-2ea44f)](https://github.com/PaperY0/pronouncing-MoonBit/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![Differential](https://img.shields.io/badge/Differential-5%2C967_queries_%C2%B7_0_deviations-brightgreen)](DIFF-REPORT.md)
+[![CI](https://github.com/PaperY0/pronouncing-MoonBit/actions/workflows/ci.yml/badge.svg)](https://github.com/PaperY0/pronouncing-MoonBit/actions/workflows/ci.yml)
+
+[中文](#papery0pronouncing) | [English](#papery0pronouncing-en)
+
 > CMU 发音词典（[CMUdict](http://www.speech.cs.cmu.edu/cgi-bin/cmudict)）+ Allison Parrish
 > [pronouncing](https://github.com/aparrish/pronouncingpy) 的 MoonBit 移植，外加 **ARPABET↔IPA** 增值。
 > 输入一个英文词，输出 **ARPABET 发音 + 重音模式 + 音节数 + 押韵部 + 押韵词 + IPA 转写**；也可用正则搜索整个词典的发音/重音。
-
-[![CI](https://github.com/PaperY0/pronouncing-MoonBit/actions/workflows/ci.yml/badge.svg)](https://github.com/PaperY0/pronouncing-MoonBit/actions/workflows/ci.yml)
-[English below](#papery0pronouncing-en)
 
 ## 为什么是它（生态零重合）
 
