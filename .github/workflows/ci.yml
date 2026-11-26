@@ -63,6 +63,25 @@ jobs:
           moon fmt
           git diff --exit-code -- '*.mbti' '*.mbt'
 
+  # 覆盖率：带插桩跑测试，产出未覆盖行清单（口径见 COVERAGE.md）。
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s -- "$(cat .moonbit-version)"
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+      - name: Run tests with coverage instrumentation
+        run: |
+          moon coverage analyze > uncovered.log
+          tail -n 3 uncovered.log
+      - name: Upload uncovered-lines report
+        uses: actions/upload-artifact@v4
+        with:
+          name: uncovered-lines
+          path: uncovered.log
+
   integration:
     runs-on: ubuntu-latest
     steps:
