@@ -6,7 +6,7 @@
     python tools/diff_test.py              # 跑对拍，写 DIFF-REPORT.md
     python tools/diff_test.py --no-report  # 只跑，结论打到 stdout
 
-基准是 aparrish/pronouncingpy（MIT）真正的 Python 包，而非任何二次移植。
+基准是 aparrish/pronouncingpy（BSD-3-Clause）真正的 Python 包，而非任何二次移植。
 本地无 Python 时用 tools/diff_test.mjs（对忠实 JS 移植），两者算法同源。
 
 两处刻意差异同样施加于参考侧，以隔离验证算法本身（见 README / DIFF-REPORT）：
@@ -152,7 +152,7 @@ def write_report(path, words, corpus, qs, ms, bad):
     L.append("# DIFF-REPORT：pronouncing-MoonBit 对上游 pronouncing 差分对拍\n")
     L.append("生成方式：`python tools/diff_test.py`（CI，对真正的 Python pronouncing 包）；本地可用 `node tools/diff_test.mjs`。\n")
     L.append("## 一、基准选择\n")
-    L.append("对拍基准是 **aparrish/pronouncingpy**（MIT）真正的 Python 包，即 CMUdict 之上那层薄算法的官方出处，而非任何二次移植。\n")
+    L.append("对拍基准是 **aparrish/pronouncingpy**（BSD-3-Clause）真正的 Python 包，即 CMUdict 之上那层薄算法的官方出处，而非任何二次移植。\n")
     L.append("## 二、用例构成\n")
     L.append(f"- 词数：**{len(words)}**（精选语料 {len(corpus['words'])} + 每 997 条目系统抽样，去重）")
     L.append("- 每词跑 phones / rhymes / syllables / stress / info 五种查询")

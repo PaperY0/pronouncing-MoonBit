@@ -1,7 +1,7 @@
 // pronouncing 上游算法的忠实 JS 移植，供本地差分对拍（tools/diff_test.mjs）。
 //
 // 逐行对照 https://github.com/aparrish/pronouncingpy/blob/master/pronouncing/__init__.py
-// （Allison Parrish, MIT, v0.3.0）。CI 侧 tools/diff_test.py 改用真正的 Python
+// （Allison Parrish, BSD-3-Clause, v0.3.0）。CI 侧 tools/diff_test.py 改用真正的 Python
 // `pronouncing` 包做权威对拍；本文件让没有 Python 的机器也能本地复现。
 //
 // 输入：stdin 每行一个查询 {"op": "...", "arg": "..."}。

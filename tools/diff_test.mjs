@@ -140,7 +140,7 @@ if (!NO_REPORT) {
   L.push('# DIFF-REPORT：pronouncing-MoonBit 对上游 pronouncing 差分对拍\n');
   L.push('生成方式：node tools/diff_test.mjs（本地，对忠实 JS 移植）；CI 用 python tools/diff_test.py 对真正的 Python pronouncing 包。\n');
   L.push('## 一、基准选择\n');
-  L.push('对拍基准是 aparrish/pronouncingpy v0.3.0（MIT），即 CMUdict 之上那层薄算法的官方出处。');
+  L.push('对拍基准是 aparrish/pronouncingpy v0.3.0（BSD-3-Clause），即 CMUdict 之上那层薄算法的官方出处。');
   L.push('本地无 Python 时用 tools/ref/pronouncing_ref.mjs（逐行对照上游 __init__.py 的忠实移植）；');
   L.push('CI 安装真正的 pronouncing + cmudict 包做权威对拍。两者算法同源。\n');
   L.push('## 二、用例构成\n');

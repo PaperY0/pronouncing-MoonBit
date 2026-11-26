@@ -1,6 +1,6 @@
 // 公共 API：CMU 发音词典查询与 pronouncing 算法移植。
 //
-// 移植来源：Allison Parrish 的 `pronouncing`（Python, MIT）
+// 移植来源：Allison Parrish 的 `pronouncing`（Python, BSD-3-Clause）
 //   https://github.com/aparrish/pronouncingpy
 // 数据来源：CMU Pronouncing Dictionary 0.7b（(c) Carnegie Mellon University）
 //   见 data/README.md。数据本体在 cmudict_data.mbt（由 tools/gen_cmudict.mjs 生成）。

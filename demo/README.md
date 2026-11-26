@@ -46,4 +46,5 @@ python -m http.server -d demo 8000       # ES module 需要 http://，file:// �
 ## 许可
 
 词典为 CMUdict 0.7b（BSD-like，(c) Carnegie Mellon University），算法来自
-`aparrish/pronouncingpy`（MIT），本项目以 MIT 发布。
+`aparrish/pronouncingpy`（BSD-3-Clause, (c) 2015 Allison Parrish，全文见根目录
+LICENSE），本项目以 MIT 发布。

@@ -4,7 +4,7 @@
 
 ## 一、基准选择
 
-对拍基准是 aparrish/pronouncingpy v0.3.0（MIT），即 CMUdict 之上那层薄算法的官方出处。
+对拍基准是 aparrish/pronouncingpy v0.3.0（BSD-3-Clause），即 CMUdict 之上那层薄算法的官方出处。
 本地无 Python 时用 tools/ref/pronouncing_ref.mjs（逐行对照上游 __init__.py 的忠实移植）；
 CI 安装真正的 pronouncing + cmudict 包做权威对拍。两者算法同源。
 

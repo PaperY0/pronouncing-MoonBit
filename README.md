@@ -155,7 +155,7 @@ node --test tools/test_demo.mjs   # demo 导出冒烟测试
 
 - 词典数据来自 CMUdict 0.7b（`cmusphinx`，SourceForge trunk），**BSD-like 许可（无限制使用，需署名），
   (c) Carnegie Mellon University**，见 [`data/README.md`](data/README.md)。
-- 算法来自 `aparrish/pronouncingpy`（**MIT**, (c) Allison Parrish）。
+- 算法来自 `aparrish/pronouncingpy`（**BSD-3-Clause**, (c) 2015 Allison Parrish，全文见 [LICENSE](LICENSE)）。
 - 本项目以 MIT 发布，LICENSE 保留上游版权声明。
 
 ## 当前状态（2026-11-25）
@@ -196,5 +196,5 @@ excludes the word itself case-insensitively (fixes an upstream footgun). String 
 `String::lexical_compare` because MoonBit's `Compare for String` is shortlex, not lexicographic.
 
 Dictionary data: CMUdict 0.7b (BSD-like, (c) Carnegie Mellon University). Algorithms:
-`aparrish/pronouncingpy` (MIT). This project: MIT. 40 tests pass on each of the three backends;
+`aparrish/pronouncingpy` (BSD-3-Clause, (c) 2015 Allison Parrish; full text in LICENSE). This project: MIT. 40 tests pass on each of the three backends;
 a 5967-query differential against upstream shows zero unexpected mismatches.
