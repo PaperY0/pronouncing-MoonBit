@@ -81,6 +81,8 @@ jobs:
         run: |
           moon build --target js --release
           cp _build/js/release/build/demo/web/web.js demo/pronouncing.js
+      - name: CLI integration tests (contract, help/batch, error exit codes)
+        run: node --test tools/test_cli.mjs
       - name: Install upstream reference package
         run: pip install pronouncing cmudict
       - name: Differential comparison against upstream Python pronouncing
