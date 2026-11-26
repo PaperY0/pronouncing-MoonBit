@@ -3,7 +3,7 @@
 本项目的所有显著变更记录于此。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
-## [Unreleased]
+## [0.1.2] - 2026-11-26
 
 ### Added
 - `ipa_for_word(word)` 便捷 API：一次调用返回一个词全部发音的 IPA 转写（重音感知）。
@@ -39,6 +39,6 @@
 - 差分对拍工具链：对真 Python `pronouncing` 包（CI）与忠实 JS 移植（本地）双重基准。
 - 40 个测试在 wasm / wasm-gc / js 三后端全过；CI（构建矩阵 + 接口一致性 + 集成对拍）与 Pages 部署。
 
-[Unreleased]: https://github.com/PaperY0/pronouncing-MoonBit/compare/v0.1.1...HEAD
+[0.1.2]: https://github.com/PaperY0/pronouncing-MoonBit/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/PaperY0/pronouncing-MoonBit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/PaperY0/pronouncing-MoonBit/commit/3b6883e
