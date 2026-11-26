@@ -85,6 +85,53 @@ moon run cmd/main -- search "ER1 P AH0" --json
 moon run cmd/main -- --batch --json syllables literally permit
 ```
 
+## 安装与最小样例
+
+已发布到 [mooncakes.io](https://mooncakes.io/docs/PaperY0/pronouncing)（`PaperY0/pronouncing`）。
+在任意 MoonBit 项目中使用：
+
+```bash
+moon new hello_pronouncing && cd hello_pronouncing
+moon add PaperY0/pronouncing
+```
+
+`cmd/main/moon.pkg` 加入依赖：
+
+```text
+import {
+  "PaperY0/pronouncing" @pronouncing,
+}
+```
+
+`cmd/main/main.mbt` 写入最小样例：
+
+```moonbit nocheck
+///|
+fn main {
+  // 查一个词的全部发音（ARPABET）
+  let phones = @pronouncing.phones_for_word("permit")
+  for p in phones {
+    println(p)
+  }
+  // 转 IPA（重音感知）
+  println(@pronouncing.arpabet_to_ipa(phones[0]))
+  // 便捷 API：词直达 IPA（0.1.2 起）
+  for ipa in @pronouncing.ipa_for_word("permit") {
+    println(ipa)
+  }
+}
+```
+
+`moon run cmd/main` 输出（对已发布的 0.1.2 实测）：
+
+```text
+P ER0 M IH1 T
+P ER1 M IH2 T
+p ɚ m ɪ t
+p ɚ m ɪ t
+p ɝ m ɪ t
+```
+
 ## 与上游的刻意差异（逐条说明）
 
 1. **phones 单空格规范化。** SourceForge 原始 `cmudict-0.7b` 词与音素之间是**两个空格**，
@@ -187,6 +234,30 @@ convert ARPABET to IPA. Pure computation, no IO; wasm / wasm-gc / js targets ver
 @pronouncing.rhymes("conditioner")       // ["commissioner", "parishioner", "petitioner", "practitioner"]
 @pronouncing.arpabet_to_ipa("P ER0 M IH1 T")  // "p ɚ m ɪ t"
 @pronouncing.ipa_for_word("permit")      // ["p ɚ m ɪ t", "p ɝ m ɪ t"]
+```
+
+**Install & minimal example** (published on [mooncakes.io](https://mooncakes.io/docs/PaperY0/pronouncing)):
+
+```bash
+moon new hello_pronouncing && cd hello_pronouncing
+moon add PaperY0/pronouncing
+```
+
+Add `"PaperY0/pronouncing" @pronouncing` to `cmd/main/moon.pkg` imports, put the snippet below
+in `cmd/main/main.mbt`, then `moon run cmd/main` — verified against the published 0.1.2:
+
+```moonbit nocheck
+///|
+fn main {
+  let phones = @pronouncing.phones_for_word("permit")
+  for p in phones {
+    println(p)
+  }
+  println(@pronouncing.arpabet_to_ipa(phones[0]))
+  for ipa in @pronouncing.ipa_for_word("permit") {
+    println(ipa)
+  }
+}
 ```
 
 **Ecosystem gap:** `moon search` for cmudict / arpabet / pronouncing / phoneme / g2p / rhyme

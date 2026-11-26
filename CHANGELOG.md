@@ -10,6 +10,7 @@
 - CLI 集成测试（`tools/test_cli.mjs`，16 例）：8 子命令 JSON 契约、人类可读输出、`--help` / `--batch`、
   参数错误非零退出、`déjà` latin-1 回归；已接入 CI integration job。
 - CI 新增 coverage job：`moon coverage analyze` 带插桩跑测试，未覆盖行清单上传为 artifact（口径见 COVERAGE.md）。
+- README 新增「安装与最小样例」：`moon add PaperY0/pronouncing` + 可运行最小示例（对已发布包实测）。
 - 跨 API 性质测试（`properties_test.mbt`）：音素编辑距离的度量性质（同一性/对称性/三角不等式/到空串距离）、
   元音辅音 inventory 自洽性、`search` 词边界语义、`search_stresses` 锚定匹配、返回值副本隔离、`rhyming_part` fallback 边界。
 
