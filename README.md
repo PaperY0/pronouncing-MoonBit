@@ -104,7 +104,7 @@ moon run cmd/main -- --batch --json syllables literally permit
 
 ## 测试策略
 
-**40 个 MoonBit 测试全部通过**，三后端各 40/40；另有跨语言差分对拍：
+**48 个 MoonBit 测试全部通过**，三后端各 48/48；另有跨语言差分对拍：
 
 1. **上游官方 doctest 向量**：`phones_for_word("permit")`、`syllable_count(literally[0])==4`、
    `stresses(obsequious[0])=="0100"`、`rhyming_part(purple[0])=="ER1 P AH0 L"`、
@@ -115,9 +115,9 @@ moon run cmd/main -- --batch --json syllables literally permit
 
 ```bash
 moon check   # 0 error，0 warning
-moon test    # 40/40（默认 wasm）
-moon test --target wasm-gc  # 40/40
-moon test --target js       # 40/40
+moon test    # 48/48（默认 wasm）
+moon test --target wasm-gc  # 48/48
+moon test --target js       # 48/48
 ```
 
 **差分对拍**：[`DIFF-REPORT.md`](DIFF-REPORT.md)——对上游 `pronouncing` 跑 **5967 个查询**
@@ -162,11 +162,12 @@ node --test tools/test_demo.mjs   # demo 导出冒烟测试
 ## 当前状态（2026-11-25）
 
 ✅ pronouncing 等价层 + ARPABET/IPA 增值层完整实现 · ✅ 上游官方 doctest 转写通过 ·
-✅ 三后端各 40/40 测试通过 · ✅ `moon check` 0 error / 0 warning ·
+✅ 三后端各 48/48 测试通过 · ✅ `moon check` 0 error / 0 warning ·
 ✅ CLI 8 子命令 + `--json` / `--batch` JSON Lines · ✅ 词典数据由 Node 脚本生成（可复现）·
 ✅ CI：三后端测试 + fmt/check/接口校验 + CLI/demo/差分回归 ·
 ✅ **差分对拍**：5967 查询逐字段一致，未预期不一致 0 ·
 ✅ **覆盖率报告**：[`COVERAGE.md`](COVERAGE.md)——88 行未覆盖（2 行防御分支 + CLI/web 走独立进程集成测试），`arpabet.mbt` 0 未覆盖（39 音素全验证）·
+✅ **变更历史**：[`CHANGELOG.md`](CHANGELOG.md)——0.1.0 / 0.1.1 与未发布变更逐条记录 ·
 ✅ `demo/` 浏览器词典页：js 后端 ES module，查询不离开页面，推送 main 自动部署 Pages。
 
 ---
@@ -198,5 +199,5 @@ excludes the word itself case-insensitively (fixes an upstream footgun). String 
 `String::lexical_compare` because MoonBit's `Compare for String` is shortlex, not lexicographic.
 
 Dictionary data: CMUdict 0.7b (BSD-like, (c) Carnegie Mellon University). Algorithms:
-`aparrish/pronouncingpy` (BSD-3-Clause, (c) 2015 Allison Parrish; full text in LICENSE). This project: MIT. 40 tests pass on each of the three backends;
+`aparrish/pronouncingpy` (BSD-3-Clause, (c) 2015 Allison Parrish; full text in LICENSE). This project: MIT. 48 tests pass on each of the three backends;
 a 5967-query differential against upstream shows zero unexpected mismatches.
