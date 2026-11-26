@@ -184,7 +184,7 @@ fn result_json(command : String, arg : String) -> String raise CliError {
       "{\"op\":\"stresses\",\"pattern\":\{json_string(arg)},\"words\":\{json_array(ws)}}"
     }
     "ipa" => {
-      let ipas = @lib.phones_for_word(arg).map(p => @lib.arpabet_to_ipa(p))
+      let ipas = @lib.ipa_for_word(arg)
       "{\"op\":\"ipa\",\"word\":\{json_string(arg)},\"ipa\":\{json_array(ipas)}}"
     }
     "info" => {
@@ -192,7 +192,7 @@ fn result_json(command : String, arg : String) -> String raise CliError {
       let ss = ps.map(p => @lib.stresses(p))
       let syl = ps.map(p => @lib.syllable_count(p))
       let rp = ps.map(p => @lib.rhyming_part(p))
-      let ipas = ps.map(p => @lib.arpabet_to_ipa(p))
+      let ipas = @lib.ipa_for_word(arg)
       "{\"op\":\"info\",\"word\":\{json_string(arg)},\"phones\":\{json_array(ps)},\"stresses\":\{json_array(ss)},\"syllables\":\{json_int_array(syl)},\"rhyming_parts\":\{json_array(rp)},\"ipa\":\{json_array(ipas)}}"
     }
     _ => raise InvalidArguments("unknown command: \{command}")
