@@ -76,6 +76,11 @@ jobs:
         run: |
           moon coverage analyze > uncovered.log
           tail -n 3 uncovered.log
+      - name: Coverage regression gate (uncovered lines must not exceed 88)
+        run: |
+          total=$(grep -oP 'Total: \K[0-9]+' uncovered.log)
+          echo "uncovered lines: $total (baseline 88)"
+          test "$total" -le 88
       - name: Upload uncovered-lines report
         uses: actions/upload-artifact@v4
         with:
