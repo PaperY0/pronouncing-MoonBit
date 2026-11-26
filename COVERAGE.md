@@ -1,13 +1,13 @@
 # Coverage Report
 
-Generated: 2026-11-25
+Generated: 2026-11-26
 Toolchain: `.moonbit-version` (moonc v0.10.22+124d61d05)
 Command: `moon coverage analyze`
 Target: wasm (default)
 
 ## Current snapshot
 
-The 40 MoonBit tests pass on wasm, wasm-gc and js. The wasm instrumentation report
+The 48 MoonBit tests pass on wasm, wasm-gc and js. The wasm instrumentation report
 contains **88 uncovered lines in 3 files**. This is an uncovered-line count, not a
 branch-coverage percentage or proof that the algorithm is complete.
 
@@ -36,7 +36,9 @@ The 62 lines in `cmd/main/main.mbt` and 24 in `demo/web/pronouncing_web.mbt` are
 CLI and the browser export. They run in **separate processes** (`moon run` / node)
 against the compiled artifacts, so their execution is not merged into this wasm
 line-coverage snapshot. They are exercised by the differential harness
-(`tools/diff_test.mjs`, 5967 queries) and the demo smoke test
+(`tools/diff_test.mjs`, 5967 queries), the CLI integration tests
+(`node --test tools/test_cli.mjs`, 16 cases covering all eight subcommands,
+`--help` / `--batch` and error exit codes) and the demo smoke test
 (`node --test tools/test_demo.mjs`); the uncovered-line count here does not mean
 those paths lack integration tests.
 
@@ -46,6 +48,7 @@ those paths lack integration tests.
 moon coverage analyze > uncovered.log
 bash demo/build.sh
 node tools/diff_test.mjs --no-report
+node --test tools/test_cli.mjs
 node --test tools/test_demo.mjs
 # CI 权威对拍：pip install pronouncing cmudict && python tools/diff_test.py --no-report
 ```
