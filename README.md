@@ -1,6 +1,6 @@
 # PaperY0/pronouncing
 
-[![MoonBit](https://img.shields.io/badge/MoonBit-0.1.2-6c4ce0)](https://mooncakes.io/docs/PaperY0/pronouncing)
+[![MoonBit](https://img.shields.io/badge/MoonBit-0.1.3-6c4ce0)](https://mooncakes.io/docs/PaperY0/pronouncing)
 [![Backend](https://img.shields.io/badge/Backend-wasm_%7C_wasm--gc_%7C_js-2ea44f)](https://github.com/PaperY0/pronouncing-MoonBit/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 [![Differential](https://img.shields.io/badge/Differential-5%2C967_queries_%C2%B7_0_deviations-brightgreen)](DIFF-REPORT.md)
@@ -210,7 +210,7 @@ node --test tools/test_demo.mjs   # demo 导出冒烟测试
 ✅ CI：三后端测试 + fmt/check/接口校验 + CLI/demo/差分回归 ·
 ✅ **差分对拍**：5967 查询逐字段一致，未预期不一致 0 ·
 ✅ **覆盖率报告**：[`COVERAGE.md`](COVERAGE.md)——88 行未覆盖（2 行防御分支 + CLI/web 走独立进程集成测试），`arpabet.mbt` 0 未覆盖（39 音素全验证）·
-✅ **变更历史**：[`CHANGELOG.md`](CHANGELOG.md)——0.1.0 至 0.1.2 逐条记录 ·
+✅ **变更历史**：[`CHANGELOG.md`](CHANGELOG.md)——0.1.0 至 0.1.3 逐条记录 ·
 ✅ `demo/` 浏览器词典页：js 后端 ES module，查询不离开页面，推送 main 自动部署 Pages。
 
 ---

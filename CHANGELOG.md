@@ -3,6 +3,17 @@
 本项目的所有显著变更记录于此。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [0.1.3] - 2026-11-26
+
+### Changed
+- CLI `ipa` / `info` 子命令复用 `ipa_for_word`（输出不变，16 个集成测试回归通过）。
+- README 生态表述更新为可复现的 mooncakes 检索结果（移除过时的「均无结果」与无出处扫描数字）；
+  COVERAGE.md 刷新至 48 测试口径并纳入 CLI 集成测试。
+
+### Added
+- CI coverage job 增加回归门禁：未覆盖行数超过基线 88 即失败。
+- 本版本将含「安装与最小样例」的 README 同步至 mooncakes（0.1.2 发布早于该文档）。
+
 ## [0.1.2] - 2026-11-26
 
 ### Added
@@ -40,6 +51,7 @@
 - 差分对拍工具链：对真 Python `pronouncing` 包（CI）与忠实 JS 移植（本地）双重基准。
 - 40 个测试在 wasm / wasm-gc / js 三后端全过；CI（构建矩阵 + 接口一致性 + 集成对拍）与 Pages 部署。
 
+[0.1.3]: https://github.com/PaperY0/pronouncing-MoonBit/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/PaperY0/pronouncing-MoonBit/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/PaperY0/pronouncing-MoonBit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/PaperY0/pronouncing-MoonBit/commit/3b6883e
