@@ -14,15 +14,12 @@
 
 ## 为什么是它（生态零重合）
 
-MoonBit 生态里**没有发音词典 / 音素分析**这一整簇能力。用官方 `moon search` 逐词检索
-`cmudict` / `arpabet` / `pronouncing` / `phoneme` / `g2p` / `pronunciation` / `rhyme` /
-`ipa` / `syllable` 等关键词，均返回 No modules found；对 mooncakes.io 约 3883 个模块、
-150 组关键词的全量扫描确认这里是空白。
-
-唯一名字相邻的模块是 `moonbit-phonetic`，但它只做 **Soundex / Metaphone 姓名哈希**——把
-发音相似的姓氏编码成同一个键（用于模糊匹配人名），与「查一个词的标准发音、数音节、找押韵、
-转 IPA」是**完全不同的领域**：前者是有损的相似度哈希，后者是无损的音素词典查询。本模块与它
-零功能重合，与生态里任何其它模块也不重合（TTS / ASR / 分词 / 翻译等方向 likewise 无相邻实现）。
+MoonBit 生态此前**没有发音词典 / 音素分析**这一整簇能力。用 `cmudict` / `arpabet` /
+`pronouncing` / `phoneme` / `g2p` / `rhyme` 等关键词检索 mooncakes，除本模块自身外仅命中
+一个中文诗词格律模块（平水韵 / 词林正韵，与英语音韵无关）；名称相近的 `moonbit-phonetic`
+（以 `phonetic` 可检索到）只做 **Soundex / Metaphone 姓名哈希**——把发音相似的姓氏编码成
+同一个键（用于模糊匹配人名），与「查一个词的标准发音、数音节、找押韵、转 IPA」是
+**完全不同的领域**：前者是有损的相似度哈希，后者是无损的音素词典查询。本模块与两者零功能重合。
 
 本模块把 Python `pronouncing` 那层薄而经典的算法（词典查询、重音提取、押韵部、正则搜索）
 完整搬到 MoonBit，并补上上游没有的 **ARPABET→IPA** 转写、音素分类（元音/塞音/擦音…）与
@@ -205,7 +202,7 @@ node --test tools/test_demo.mjs   # demo 导出冒烟测试
 - 算法来自 `aparrish/pronouncingpy`（**BSD-3-Clause**, (c) 2015 Allison Parrish，全文见 [LICENSE](LICENSE)）。
 - 本项目以 MIT 发布，LICENSE 保留上游版权声明。
 
-## 当前状态（2026-11-25）
+## 当前状态（2026-11-26）
 
 ✅ pronouncing 等价层 + ARPABET/IPA 增值层完整实现 · ✅ 上游官方 doctest 转写通过 ·
 ✅ 三后端各 48/48 测试通过 · ✅ `moon check` 0 error / 0 warning ·
@@ -258,9 +255,11 @@ fn main {
 }
 ```
 
-**Ecosystem gap:** `moon search` for cmudict / arpabet / pronouncing / phoneme / g2p / rhyme
-returns no modules; the only adjacent module (`moonbit-phonetic`) does Soundex/Metaphone name
-hashing, a different domain. Zero functional overlap with any existing module.
+**Ecosystem gap:** searching mooncakes for cmudict / arpabet / pronouncing / phoneme / g2p /
+rhyme returns this module itself plus, for `rhyme`, one Chinese classical-poetry module
+(Pingshui / Cilin rhyme books, unrelated to English phonology). The similarly named
+`moonbit-phonetic` (found via `phonetic`) does Soundex/Metaphone name hashing — a lossy
+similarity hash, a different domain from lossless phoneme-dictionary lookup. Zero functional overlap.
 
 Two deliberate differences from upstream (both documented in DIFF-REPORT): phones are
 normalized to single spaces (semantically equivalent, matches upstream doctests), and `rhymes`
