@@ -154,6 +154,15 @@ pub fn phones_for_word(word : String) -> Array[String] {
 }
 
 ///|
+/// 词 → IPA（增值 API）：查全部发音并逐条转写为 IPA，重音感知。
+///
+/// 等价于对 phones_for_word 的每条结果调用 arpabet_to_ipa；
+/// 未收录词返回空数组。例：ipa_for_word("permit") == ["p ɚ m ɪ t", "p ɝ m ɪ t"]。
+pub fn ipa_for_word(word : String) -> Array[String] {
+  phones_for_word(word).map(arpabet_to_ipa)
+}
+
+///|
 /// 取一个 phones 字符串的重音模式（只保留 0/1/2 数字，保序）。
 ///
 /// 对应 pronouncing.stresses：`re.sub(r"[^012]", "", s)`。

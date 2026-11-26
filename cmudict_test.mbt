@@ -152,3 +152,25 @@ test "counts/entry and word counts" {
   assert_eq(@pronouncing.entry_count(), 133852)
   assert_true(@pronouncing.word_count() > 100000)
 }
+
+///|
+test "ipa_for_word/permit both pronunciations" {
+  assert_eq(@pronouncing.ipa_for_word("permit"), ["p ɚ m ɪ t", "p ɝ m ɪ t"])
+  // 大小写不敏感，与 phones_for_word 一致
+  assert_eq(
+    @pronouncing.ipa_for_word("PERMIT"),
+    @pronouncing.ipa_for_word("permit"),
+  )
+}
+
+///|
+test "ipa_for_word/unknown word and composition law" {
+  assert_eq(@pronouncing.ipa_for_word("zzznotaword"), [])
+  // 组合律：ipa_for_word == phones_for_word 逐条 arpabet_to_ipa
+  for w in ["orange", "banana", "computer", "water"] {
+    let expected = @pronouncing.phones_for_word(w).map(
+      @pronouncing.arpabet_to_ipa,
+    )
+    assert_eq(@pronouncing.ipa_for_word(w), expected)
+  }
+}

@@ -16,6 +16,8 @@ pub fn cmudict_lines() -> Array[String]
 
 pub fn entry_count() -> Int32
 
+pub fn ipa_for_word(String) -> Array[String]
+
 pub fn is_vowel(String) -> Bool
 
 pub fn phone_edit_distance(String, String) -> Int32

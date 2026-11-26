@@ -34,7 +34,7 @@ MoonBit 生态里**没有发音词典 / 音素分析**这一整簇能力。用�
   （15 元音 + 24 辅音）。数据以 `#|` 多行字符串分块嵌入源码，惰性建 Map，无需运行时读文件。
 - **pronouncing 等价 API**：`phones_for_word` / `stresses` / `stresses_for_word` /
   `syllable_count` / `rhyming_part` / `rhymes` / `search` / `search_stresses`。
-- **ARPABET 增值**：`arpabet_to_ipa`（整串转写，重音感知：AH0→ə / AH1→ʌ，ER0→ɚ / ER1→ɝ）、
+- **ARPABET 增值**：`ipa_for_word`（词直达 IPA）、`arpabet_to_ipa`（整串转写，重音感知：AH0→ə / AH1→ʌ，ER0→ɚ / ER1→ɝ）、
   `phone_to_ipa`（单音素）、`phone_kind`（Vowel/Stop/Affricate/Fricative/Aspirate/Liquid/Nasal/Semivowel）、
   `is_vowel` / `strip_stress` / `stress_of` / `phone_edit_distance`（忽略重音的 Levenshtein）。
 
@@ -54,6 +54,7 @@ pub fn entry_count() -> Int                              // 133852
 pub fn word_count() -> Int
 
 // ARPABET / IPA 增值层
+pub fn ipa_for_word(String) -> Array[String]               // 词 → IPA（查发音并逐条转写）
 pub fn arpabet_to_ipa(String) -> String                  // "P ER0 M IH1 T" -> "p ɚ m ɪ t"
 pub fn phone_to_ipa(String) -> String?
 pub fn phone_kind(String) -> PhoneKind?
@@ -184,6 +185,7 @@ convert ARPABET to IPA. Pure computation, no IO; wasm / wasm-gc / js targets ver
 @pronouncing.phones_for_word("permit")   // ["P ER0 M IH1 T", "P ER1 M IH2 T"]
 @pronouncing.rhymes("conditioner")       // ["commissioner", "parishioner", "petitioner", "practitioner"]
 @pronouncing.arpabet_to_ipa("P ER0 M IH1 T")  // "p ɚ m ɪ t"
+@pronouncing.ipa_for_word("permit")      // ["p ɚ m ɪ t", "p ɝ m ɪ t"]
 ```
 
 **Ecosystem gap:** `moon search` for cmudict / arpabet / pronouncing / phoneme / g2p / rhyme
